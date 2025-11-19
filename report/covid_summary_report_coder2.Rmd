@@ -1,0 +1,31 @@
+---
+title: "COVID Summary Report — Coder 2"
+author: "Akanshya Dash"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(readr)
+library(dplyr)
+library(knitr)
+library(scales)
+sf <- tryCatch(get("sex_filter", inherits = TRUE), error = function(e) "ALL")
+```
+
+# Coder 2 – Display your CFR table
+
+Population: Confirmed COVID-19 cases (classification 1–3)
+Death: Non-missing DATE_DIED (excluding NA/blank/9999-99-99)
+Sex filter: r tryCatch(get("sex_filter", inherits = TRUE), error = function(e) "ALL")
+
+```{r cfr_table, echo=FALSE}
+read_csv("../output/tables/cfr_by_comorbidity.csv", show_col_types = FALSE) |>
+  mutate(cfr = percent(cfr, accuracy = 0.1)) |>
+  kable(caption = "Case Fatality Rates among Patients with Common Comorbidities")
+```
+
+# Display your bar chart figure
+```{r prevalence_fig, echo=FALSE, out.width="90%"}
+knitr::include_graphics("../output/figures/comorbidity_prevalence.png")
+```
