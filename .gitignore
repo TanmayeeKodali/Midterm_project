@@ -1,0 +1,10 @@
+cat > .gitignore << 'EOF'
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user
+report.html
+output/tables/*.rds
+output/tables/*.csv
+output/figures/*.png
+EOF
