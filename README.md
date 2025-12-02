@@ -2,16 +2,17 @@ Midterm Project 2: GitHub - COVID-19 Analysis Report
 
 Overview
 This project analyzes COVID-19 case data, examining mortality patterns, comorbidities, demographics, pneumonia prevalence, and hospitalization rates.
+
 Setup Instructions
 Package Installation
 This project uses renv for package management. To install all required packages:
-bashmake install
+make install
 This will restore all packages from the renv.lock file.
 Building the Report
 To generate the full report:
-bashmake report
-This will:
+make report
 
+This will:
 Execute all analysis scripts in the code/ folder
 Generate tables in output/tables/
 Generate figures in output/figures/
@@ -161,14 +162,11 @@ labelled - Variable labels
 
 Testing
 The report is designed to work with updated datasets. To test:
-
 Replace data/covid_sub.csv with updated data (must have same column structure)
 Run make report
 Verify that report compiles successfully with new data
 
-
 Team Members
-
 Samridhi Purohit (Coder 1)
 Akanshya Dash (Coder 2)
 Deepanshu Goel (Coder 3)
