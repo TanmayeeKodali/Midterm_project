@@ -186,6 +186,7 @@ The report is designed to work with updated datasets. To test:
 
 ## Team Members
 
+- Adriana Georgette Gutierrez Yllu (Team Lead)
 - Samridhi Purohit (Coder 1)
 - Akanshya Dash (Coder 2)
 - Deepanshu Goel (Coder 3)
