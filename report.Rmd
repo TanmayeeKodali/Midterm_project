@@ -1,0 +1,149 @@
+---
+title: "COVID-19 Analysis Report"
+author: "Team Analysis"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cosmo
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(knitr)
+library(ggplot2)
+library(dplyr)
+```
+
+# Executive Summary
+
+This report summarizes COVID-19 case data, including case classifications, mortality patterns, comorbidities, pneumonia prevalence, hospitalization rates, and demographic distributions.
+
+---
+
+# 1. Case Classification
+
+## Classification Summary
+
+```{r table1}
+classification_data <- read.csv("output/tables/classification_summary.csv")
+kable(classification_data, 
+      caption = "Table 1: Distribution of Case Classifications",
+      col.names = c("Classification", "Count", "Percent"))
+```
+
+## Classification Distribution
+
+```{r figure1}
+knitr::include_graphics("output/figures/classification_distribution.png")
+```
+
+---
+
+# 2. Comorbidity Analysis
+
+## CFR by Comorbidity Status
+
+```{r table2}
+cfr_comorbidity <- read.csv("output/tables/cfr_by_comorbidity.csv")
+kable(cfr_comorbidity, 
+      caption = "Table 2: Case Fatality Rate by Comorbidity",
+      col.names = c("Comorbidity", "Cases", "Deaths", "CFR"),
+      digits = 4)
+```
+
+## Top Comorbidities Prevalence
+
+```{r figure2}
+knitr::include_graphics("output/figures/comorbidity_prevalence.png")
+```
+
+---
+
+# 3. Mortality Analysis
+
+## Mortality by ICU Admission and Intubation
+
+```{r table3}
+mortality_data <- readRDS("output/tables/mortality.rds")
+mortality_data
+```
+
+## Mortality by ICU Admission
+
+```{r figure3}
+knitr::include_graphics("output/figures/sbs_bar_admit.png")
+```
+
+## Mortality by Intubation Status
+
+```{r figure4}
+knitr::include_graphics("output/figures/sbs_bar_intub.png")
+```
+
+---
+
+# 4. Pneumonia and Hospitalization
+
+## Pneumonia Status by Age
+
+```{r table4}
+pneumonia_data <- readRDS("output/tables/Pneumonia_status.rds")
+kable(pneumonia_data, 
+      caption = "Table 4: Pneumonia Status by Age Group",
+      col.names = c("Age Group", "Total Cases", "Pneumonia Cases"))
+```
+
+```{r figure5}
+knitr::include_graphics("output/figures/Pneumonia_age.png")
+```
+
+## Patient Type (Hospitalization) by Age
+
+```{r table5}
+patient_type_data <- readRDS("output/tables/patient_type.rds")
+kable(patient_type_data, 
+      caption = "Table 5: Hospitalization Rates by Age Group",
+      col.names = c("Age Group", "Total Cases", "Hospitalized", "Rate"),
+      digits = 3)
+```
+
+```{r figure6}
+knitr::include_graphics("output/figures/PatientType_age.png")
+```
+
+---
+
+# 5. Demographics
+
+## CFR by Sex
+
+```{r table6}
+cfr_sex <- readRDS("output/tables/cfr_by_sex.rds")
+kable(cfr_sex, 
+      caption = "Table 6: Case Fatality Rate by Sex",
+      col.names = c("Sex", "Total Cases", "Deaths", "Survivors", "CFR (%)"))
+```
+
+## Age Distribution
+
+```{r figure7}
+knitr::include_graphics("output/figures/age_distribution.png")
+```
+
+---
+
+# Conclusions
+
+This report provides a comprehensive overview of COVID-19 patterns across multiple dimensions:
+
+- **Case Classifications**: Distribution of confirmed, suspected, and negative cases
+- **Comorbidities**: Impact of pre-existing conditions on case fatality rates
+- **Mortality**: Relationship between clinical interventions (ICU admission, intubation) and outcomes
+- **Pneumonia**: Age-stratified prevalence of pneumonia at presentation
+- **Hospitalization**: Age-related patterns in hospital admission
+- **Demographics**: Age and sex distributions and their relationship to outcomes
+
+---
