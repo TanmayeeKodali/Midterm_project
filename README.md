@@ -192,3 +192,34 @@ The report is designed to work with updated datasets. To test:
 - Deepanshu Goel (Coder 3)
 - Abha Namjoshi (Coder 4)
 - Tanmayee Kodali (Coder 5)
+
+---
+
+## Customized Version of the Report
+
+A customized version of the report is included in `report.Rmd`.
+In addition to integrating all generated tables and figures, the team added substantial narrative content to create a complete written epidemiologic report. The customized sections include:
+
+**Introduction** summarizing the public health context and analytic goals
+
+**Methods** describing the reproducible workflow (renv, Makefile, R scripts)
+
+**Interpretation** for each table and figure, including:
+
+1. Case classifications
+2. Comorbidities and CFR
+3. ICU and intubation mortality
+5. Pneumonia prevalence
+6. Hospitalization patterns
+7. Sex specific CFRs 
+8. Age distribution histogram
+
+**Discussion** highlighting key epidemiologic findings
+
+**Conclusion** summarizing implications and the reproducible pipeline
+
+These narrative sections were written by the team and go beyond the default template.
+The customized version of the report compiles successfully without errors using both the original dataset and updated datasets with the same column structure.
+
+
+
